@@ -76,7 +76,7 @@ print(Group_Members_Classification["Omodara"])
 print(Group_Members_Classification["Gbolahan"])
 print(Group_Members_Classification["Deborah"])
 
-##OUTPUT
+### OUTPUT
 {'Name': 'Yahya Abdulrahman Babatunde', 'Slack_username': 'Yahya', 'Email': 'yahya.ope247@gmail.com', 'Hobby': 'Practically_nothing', 'Country': 'Nigerian', 'Preferred_Programming_Language': 'Python'}
 {'Name': 'Akinade Qanitat Adedoyinmola', 'Slack_username': 'Qanitat', 'Email': 'qanitatadedoyinmola@gmail.com', 'Hobby': 'sleeping', 'Country': 'Nigerian', 'Preferred_Programming_Language': 'Python'}
 {'Name': 'Chinenyenwa Mba Oji', 'Slack_username': 'Chinenyenwa', 'Email': 'mbaojichinenyenwa@gmail.com', 'Hobby': 'African_Fiction', 'Country': 'Nigerian', 'Preferred_Programming_Language': 'Python'}
