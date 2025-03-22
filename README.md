@@ -1,88 +1,133 @@
-# hackbio-biocoding-internship # Group Members Classification
+#   Team ACG Members' Information
 
-#This Python script defines a dictionary containing details of my group members and prints their information in an organized manner.
+##   Overview
 
-## Overview
-#The script organizes data about members of my group, including their:
-- Full names
-- Slack usernames
-- Email addresses
-- Hobbies
-- Country
-- Preferred programming language
+    This Python script uses a single multi-line print statement to display the informations of the members of Team ACG. The provided informations on each member includes :
 
-#Each group member's details are stored in a dictionary format for clarity and easy access. Using Python's `print` function, the script outputs each member's details in a well detailed and understandable manner.
+    -   Name
+    -   Slack Username
+    -   Email
+    -   Hobby
+    -   Country
+    -   Discipline
+    -   Preferred Programming Language
 
-## Structure
-The script defines the data as a nested dictionary:
-- Each key represents a member's identifier (e.g., "Yahya","Qanitat","Chinenyenwa","Omodara","Gbolahan","Deborah").
-- Each value is another dictionary holding the details of the member.
+   #The script provides a straightforward way to present this data in a formatted text output.
 
-### Dictionary code using python
-Group_Members_Classification = {
-"Yahya": {
-    "Name": "Yahya Abdulrahman Babatunde",
-    "Slack_username": "Yahya",
-    "Email": "yahya.ope247@gmail.com",
-    "Hobby": "Practically_nothing",
-    "Country": "Nigerian",
-    "Preferred_Programming_Language": "Python"
-},
-"Qanitat": {
-    "Name": "Akinade Qanitat Adedoyinmola",
-    "Slack_username": "Qanitat",
-    "Email": "qanitatadedoyinmola@gmail.com",
-    "Hobby": "sleeping",
-    "Country": "Nigerian",
-    "Preferred_Programming_Language": "Python"
-},
-"Chinenyenwa": {
-    "Name": "Chinenyenwa Mba Oji", 
-    "Slack_username": "Chinenyenwa",
-    "Email": "mbaojichinenyenwa@gmail.com",
-    "Hobby": "African_Fiction",
-    "Country": "Nigerian",
-    "Preferred_Programming_Language": "Python"
-},
-"Omodara": {
-    "Name": "Ayomide Omodara Boluwatife", 
-    "Slack_username": "Omodara",
-    "Email": "ayoboluomodara@gmail.com",
-    "Hobby": "Baking",
-    "Country": "Nigerian",
-    "Preferred_Programming_Language": "Python"
-},
-"Gbolahan": {
-    "Name": "Adegboye Gbolahan", 
-    "Slack_username": "Gbolahan",
-    "Email": "adegboyegbolahan225@gmail.com",
-    "Hobby": "Listening to music",
-    "Country": "Nigerian",
-    "Preferred_Programming_Language": "Python"
-},
-"Deborah": {
-    "Name": "Olatosin Deborah", 
-    "Slack_username": "Deborah",
-    "Email": "deborah@gmail.com",
-    "Hobby": "Baking",
-    "Country": "Nigerian",
-    "Preferred_Programming_Language": "Python"
-}
-}
-print(Group_Members_Classification["Yahya"])
-print(Group_Members_Classification["Qanitat"])
-print(Group_Members_Classification["Chinenyenwa"])
-print(Group_Members_Classification["Omodara"])
-print(Group_Members_Classification["Gbolahan"])
-print(Group_Members_Classification["Deborah"])
+##   Code Description
 
-### OUTPUT
-{'Name': 'Yahya Abdulrahman Babatunde', 'Slack_username': 'Yahya', 'Email': 'yahya.ope247@gmail.com', 'Hobby': 'Practically_nothing', 'Country': 'Nigerian', 'Preferred_Programming_Language': 'Python'}
-{'Name': 'Akinade Qanitat Adedoyinmola', 'Slack_username': 'Qanitat', 'Email': 'qanitatadedoyinmola@gmail.com', 'Hobby': 'sleeping', 'Country': 'Nigerian', 'Preferred_Programming_Language': 'Python'}
-{'Name': 'Chinenyenwa Mba Oji', 'Slack_username': 'Chinenyenwa', 'Email': 'mbaojichinenyenwa@gmail.com', 'Hobby': 'African_Fiction', 'Country': 'Nigerian', 'Preferred_Programming_Language': 'Python'}
-{'Name': 'Ayomide Omodara Boluwatife', 'Slack_username': 'Omodara', 'Email': 'ayoboluomodara@gmail.com', 'Hobby': 'Baking', 'Country': 'Nigerian', 'Preferred_Programming_Language': 'Python'}
-{'Name': 'Adegboye Gbolahan', 'Slack_username': 'Gbolahan', 'Email': 'adegboyegbolahan225@gmail.com', 'Hobby': 'Listening to music', 'Country': 'Nigerian', 'Preferred_Programming_Language': 'Python'}
-{'Name': 'Olatosin Deborah', 'Slack_username': 'Deborah', 'Email': 'deborah@gmail.com', 'Hobby': 'Baking', 'Country': 'Nigerian', 'Preferred_Programming_Language': 'Python'}
+    #The script employs Python's triple-quoted string literals (""" """) to create a multi-line string. This string contains the informations for each team member. The print() function then outputs this entire string to the console.
 
-#Output shows the details of each of my group members in a well readable and understandable manner
+    ## python code
+    print("""=== Team ACG Members' Information ===
 
+    Name: Yahya Abdulrahman Babatunde
+    Slack Username: Yahya
+    Email: yahya.ope247@gmail.com
+    Hobby: Practically nothing
+    Country: Nigeria
+    Discipline: Cell Biology and Genetics
+    Preferred Programming Language: Python
+
+    Name: Akinade Qanitat Adedoyinmola
+    Slack Username: Qanitat
+    Email: qanitatadedoyinmola@gmail.com
+    Hobby: Sleeping
+    Country: Nigeria
+    Discipline: Cell Biology and Genetics
+    Preferred Programming Language: Python
+
+    Name: Chinenyenwa Mba Oji
+    Slack Username: Chinenyenwa
+    Email: mbaojichinenyenwa@gmail.com
+    Hobby: Reading African Fiction
+    Country: Nigeria
+    Discipline: Cell Biology and Genetics
+    Preferred Programming Language: Python
+
+    Name: Ayomide Omodara Boluwatife
+    Slack Username: Omodara
+    Email: ayoboluomodara@gmail.com
+    Hobby: Baking
+    Country: Nigeria
+    Discipline: Cell Biology and Genetics
+    Preferred Programming Language: Python
+
+    Name: Adegboye Gbolahan
+    Slack Username: Gbolahan
+    Email: adegboyegbolahan225@gmail.com
+    Hobby: Listening to music
+    Country: Nigeria
+    Discipline: Cell Biology and Genetics
+    Preferred Programming Language: Python
+
+    Name: Olatosin Deborah
+    Slack Username: Deborah
+    Email: deborah.olatosin@gmail.com
+    Hobby: Baking
+    Country: Nigeria
+    Discipline: Cell Biology and Genetics
+    Preferred Programming Language: Python
+    """)
+    
+
+##   Output
+
+    #The script produces a formatted text output to the console, displaying the information for each team member.
+
+    
+    === Team ACG Members' Information ===
+
+    Name: Yahya Abdulrahman Babatunde
+    Slack Username: Yahya
+    Email: yahya.ope247@gmail.com
+    Hobby: Practically nothing
+    Country: Nigeria
+    Discipline: Cell Biology and Genetics
+    Preferred Programming Language: Python
+
+    Name: Akinade Qanitat Adedoyinmola
+    Slack Username: Qanitat
+    Email: qanitatadedoyinmola@gmail.com
+    Hobby: Sleeping
+    Country: Nigeria
+    Discipline: Cell Biology and Genetics
+    Preferred Programming Language: Python
+
+    Name: Chinenyenwa Mba Oji
+    Slack Username: Chinenyenwa
+    Email: mbaojichinenyenwa@gmail.com
+    Hobby: Reading African Fiction
+    Country: Nigeria
+    Discipline: Cell Biology and Genetics
+    Preferred Programming Language: Python
+
+    Name: Ayomide Omodara Boluwatife
+    Slack Username: Omodara
+    Email: ayoboluomodara@gmail.com
+    Hobby: Baking
+    Country: Nigeria
+    Discipline: Cell Biology and Genetics
+    Preferred Programming Language: Python
+
+    Name: Adegboye Gbolahan
+    Slack Username: Gbolahan
+    Email: adegboyegbolahan225@gmail.com
+    Hobby: Listening to music
+    Country: Nigeria
+    Discipline: Cell Biology and Genetics
+    Preferred Programming Language: Python
+
+    Name: Olatosin Deborah
+    Slack Username: Deborah
+    Email: deborah.olatosin@gmail.com
+    Hobby: Baking
+    Country: Nigeria
+    Discipline: Cell Biology and Genetics
+    Preferred Programming Language: Python
+    
+
+##   Considerations
+
+    While this script effectively displays the information, i would advice the use of data structures like dictionaries and lists for larger datasets or more complex data management, and then looping to 'print' the information is generally more efficient and maintainable. This script provides a simple, direct output for a small, fixed set of data.
+    
