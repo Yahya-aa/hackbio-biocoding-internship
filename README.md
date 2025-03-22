@@ -18,7 +18,7 @@
 
     #The script employs Python's triple-quoted string literals (""" """) to create a multi-line string. This string contains the informations for each team member. The print() function then outputs this entire string to the console.
 
-    ## python code
+    #python code
     print("""=== Team ACG Members' Information ===
 
     Name: Yahya Abdulrahman Babatunde
