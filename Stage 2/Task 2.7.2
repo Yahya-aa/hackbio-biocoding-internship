@@ -1,0 +1,35 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Create a new column for Weight in pounds
+df_filled['Weight_pounds'] = df_filled['Weight'] * 2.2
+
+# Set up subplots for the histograms
+plt.figure(figsize=(15, 10))
+
+plt.subplot(2, 2, 1)
+sns.histplot(df_filled['BMI'], kde=True)
+plt.title('Distribution of BMI')
+plt.xlabel('BMI')
+plt.ylabel('Frequency')
+
+plt.subplot(2, 2, 2)
+sns.histplot(df_filled['Weight'], kde=True)
+plt.title('Distribution of Weight')
+plt.xlabel('Weight')
+plt.ylabel('Frequency')
+
+plt.subplot(2, 2, 3)
+sns.histplot(df_filled['Weight_pounds'], kde=True)
+plt.title('Distribution of Weight in Pounds')
+plt.xlabel('Weight (Pounds)')
+plt.ylabel('Frequency')
+
+plt.subplot(2, 2, 4)
+sns.histplot(df_filled['Age'], kde=True)
+plt.title('Distribution of Age')
+plt.xlabel('Age')
+plt.ylabel('Frequency')
+
+plt.tight_layout()
+plt.show()
