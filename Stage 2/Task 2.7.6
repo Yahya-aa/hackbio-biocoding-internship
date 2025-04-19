@@ -1,0 +1,25 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+plt.figure(figsize=(18, 5))
+
+plt.subplot(1, 3, 1)
+sns.scatterplot(data=df_filled, x='Height', y='Weight', hue='Gender')
+plt.title('Weight vs. Height (Colored by Gender)')
+plt.xlabel('Height')
+plt.ylabel('Weight')
+
+plt.subplot(1, 3, 2)
+sns.scatterplot(data=df_filled, x='Height', y='Weight', hue='Diabetes')
+plt.title('Weight vs. Height (Colored by Diabetes)')
+plt.xlabel('Height')
+plt.ylabel('Weight')
+
+plt.subplot(1, 3, 3)
+sns.scatterplot(data=df_filled, x='Height', y='Weight', hue='SmokingStatus')
+plt.title('Weight vs. Height (Colored by Smoking Status)')
+plt.xlabel('Height')
+plt.ylabel('Weight')
+
+plt.tight_layout()
+plt.show()
