@@ -1,0 +1,16 @@
+TASK 2.7
+
+import pandas as pd
+import requests
+from io import StringIO
+
+url = 'https://raw.githubusercontent.com/HackBio-Internship/public_datasets/main/R/nhanes.csv'
+try:
+    response = requests.get(url)
+    response.raise_for_status()  # Raise an exception for bad status codes
+    csv_content = StringIO(response.text)
+    df = pd.read_csv(csv_content)
+    print("Data loaded successfully using requests:")
+    print(df.head())
+except requests.exceptions.RequestException as e:
+    print(f"Error loading data: {e}")
