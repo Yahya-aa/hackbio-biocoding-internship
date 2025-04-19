@@ -1,0 +1,14 @@
+def time_to_reach_target(population, time_points, target_percentage):
+    max_population = max(population)
+    target_value = target_percentage * max_population / 100
+    # Find the time index where population reaches or exceeds the target value
+    for i, pop in enumerate(population):
+        if pop >= target_value:
+            return time_points[i]
+            return None  # If target percentage isn't reached within the data
+# Example usage
+time_points = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]  # Example time points
+population = [0, 10, 25, 50, 70, 85, 95, 80, 90, 100, 100]  # Example population data
+target_percentage = 80  # Target percentage of the carrying capacity
+time_to_80_percent = time_to_reach_target(population, time_points, target_percentage)
+print(f"The time to reach {target_percentage}% of the maximum population is {time_to_80_percent}.")
