@@ -1,0 +1,10 @@
+def hamming_distance(name1, name2):
+    if len(name1) != len(name2):
+        raise ValueError("Strings must be of equal length")
+    return sum(alpha1 != alpha2 for alpha1, alpha2 in zip(name1, name2)) #alpha denotes the alphabets in each name
+slack_username = "Yahya"  
+twitter_handle = "Yahya"     
+# To compare, make sure both strings are of the same length
+slack_username = slack_username[:len(twitter_handle)]
+hamming_distance = hamming_distance(slack_username, twitter_handle)
+print(f"The Hamming distance between my Slack username '{slack_username}' and Twitter/X handle '{twitter_handle}' is {hamming_distance}.")
