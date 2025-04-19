@@ -1,0 +1,53 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Function to simulate logistic growth
+def logistic_growth_curve(t, K, r, lag_phase, exp_phase):
+    # Apply random lag and exponential phases
+    t = np.array(t)
+    shift = np.random.uniform(lag_phase[0], lag_phase[1])
+    t_adjusted = t - shift
+    t_adjusted[t_adjusted < 0] = 0  # Set values before lag phase to 0
+
+    # Apply logistic growth equation
+    P = K / (1 + ((K - 1) / 1) * np.exp(-r * t_adjusted))  # P = population size
+    P[t < shift + exp_phase[0]] = 0  # Lag phase before exponential growth
+
+    return P
+
+# Generate DataFrame with 100 different growth curves
+def generate_growth_curves(num_curves=100, time_range=100):
+    time = np.linspace(0, time_range, time_range)
+    curves = []
+
+    for i in range(num_curves):
+        K = np.random.uniform(100, 1000)  # Carrying capacity
+        r = np.random.uniform(0.1, 1.0)  # Growth rate
+        lag_phase = (0, 10)  # Randomized lag phase range
+        exp_phase = (5, 15)  # Randomized exponential phase range
+
+        curve = logistic_growth_curve(time, K, r, lag_phase, exp_phase)
+        curves.append(curve)
+
+    # Create DataFrame
+    df = pd.DataFrame(curves).transpose()
+    df.columns = [f'Curve_{i+1}' for i in range(num_curves)]
+    df['Time'] = time
+    return df
+
+# Generate and display growth curves
+df_growth = generate_growth_curves()
+
+# Display the first few rows
+print(df_growth.head())
+
+# Plot some sample curves
+plt.figure(figsize=(10, 6))
+for col in df_growth.columns[:10]:  # Plot first 10 curves
+    plt.plot(df_growth['Time'], df_growth[col], label=col)
+plt.xlabel("Time")
+plt.ylabel("Population Size")
+plt.title("Logistic Growth Curves")
+plt.legend()
+plt.show()
