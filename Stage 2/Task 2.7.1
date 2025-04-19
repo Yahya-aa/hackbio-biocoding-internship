@@ -1,0 +1,12 @@
+# Check for NA values in the DataFrame
+print("Number of NA values before processing:")
+print(df.isna().sum())
+
+# Fill NA values with 0
+df_filled = df.fillna(0)
+
+# Verify that NA values have been filled
+print("\nNumber of NA values after filling with 0:")
+print(df_filled.isna().sum())
+
+# Now, we will use the df_filled DataFrame for the subsequent tasks
