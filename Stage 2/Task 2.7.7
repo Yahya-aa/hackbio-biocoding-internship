@@ -1,0 +1,62 @@
+# Create a copy of the original DataFrame to work on
+df_processed = df.copy()
+
+# Convert Gender to numerical (male=1, female=2)
+df_processed['Gender'] = df_processed['Gender'].map({'male': 1, 'female': 2}).fillna(0).astype(int)
+
+# Convert Diabetes to numerical (No=0, Yes=1)
+df_processed['Diabetes'] = df_processed['Diabetes'].map({'No': 0, 'Yes': 1}).fillna(0).astype(int)
+
+# Create a binary MaritalStatus (Married=1, Not Married=0)
+df_processed['MaritalStatus_Binary'] = df_processed['MaritalStatus'].apply(lambda x: 1 if x == 'Married' else 0).fillna(0).astype(int)
+
+print("Value counts for Gender after mapping:")
+print(df_processed['Gender'].value_counts())
+print("\nValue counts for Diabetes after mapping:")
+print(df_processed['Diabetes'].value_counts())
+print("\nValue counts for MaritalStatus_Binary:")
+print(df_processed['MaritalStatus_Binary'].value_counts())
+
+print("\nConducting t-tests (after correct data processing):")
+
+# T-test between Age and Gender
+age_male = df_processed[df_processed['Gender'] == 1]['Age']
+age_female = df_processed[df_processed['Gender'] == 2]['Age']
+if not age_male.empty and not age_female.empty:
+    t_stat_age_gender, p_value_age_gender = stats.ttest_ind(age_male, age_female, nan_policy='omit')
+    print(f"\nT-test between Age and Gender:")
+    print(f"T-statistic: {t_stat_age_gender:.3f}, P-value: {p_value_age_gender:.3f}")
+    if p_value_age_gender < 0.05:
+        print("Conclusion: There is a statistically significant difference in the mean age between genders.")
+    else:
+        print("Conclusion: There is no statistically significant difference in the mean age between genders.")
+else:
+    print("\nCannot perform t-test between Age and Gender because one or both groups are empty.")
+
+# T-test between BMI and Diabetes
+bmi_diabetes = df_processed[df_processed['Diabetes'] == 1]['BMI']
+bmi_no_diabetes = df_processed[df_processed['Diabetes'] == 0]['BMI']
+if not bmi_diabetes.empty and not bmi_no_diabetes.empty:
+    t_stat_bmi_diabetes, p_value_bmi_diabetes = stats.ttest_ind(bmi_diabetes, bmi_no_diabetes, nan_policy='omit')
+    print(f"\nT-test between BMI and Diabetes:")
+    print(f"T-statistic: {t_stat_bmi_diabetes:.3f}, P-value: {p_value_bmi_diabetes:.3f}")
+    if p_value_bmi_diabetes < 0.05:
+        print("Conclusion: There is a statistically significant difference in the mean BMI between individuals with and without diabetes.")
+    else:
+        print("Conclusion: There is no statistically significant difference in the mean BMI between individuals with and without diabetes.")
+else:
+    print("\nCannot perform t-test between BMI and Diabetes because one or both groups are empty.")
+
+# T-test between Alcohol Year and Relationship Status (Married vs. Not Married)
+alc_married = df_processed[df_processed['MaritalStatus_Binary'] == 1]['AlcoholYear']
+alc_not_married = df_processed[df_processed['MaritalStatus_Binary'] == 0]['AlcoholYear']
+if not alc_married.empty and not alc_not_married.empty:
+    t_stat_alc_marital, p_value_alc_marital = stats.ttest_ind(alc_married, alc_not_married, nan_policy='omit')
+    print(f"\nT-test between Alcohol Year and Relationship Status (Married vs. Not Married):")
+    print(f"T-statistic: {t_stat_alc_marital:.3f}, P-value: {p_value_alc_marital:.3f}")
+    if p_value_alc_marital < 0.05:
+        print("Conclusion: There is a statistically significant difference in the mean number of alcoholic drinks per year between married and not married individuals.")
+    else:
+        print("Conclusion: There is no statistically significant difference in the mean number of alcoholic drinks per year between married and not married individuals.")
+else:
+    print("\nCannot perform t-test between Alcohol Year and Relationship Status because one or both groups are empty.")
