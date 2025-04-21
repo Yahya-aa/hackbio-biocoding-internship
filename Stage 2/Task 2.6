@@ -1,0 +1,40 @@
+# Task 1: Generate a volcano plot
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Load the dataset (ensure this uses the correct separator, e.g., sep=' ')
+df = pd.read_csv('https://gist.githubusercontent.com/stephenturner/806e31fce55a8b7175af/raw/1a507c4c3f9f1baaa3a69187223ff3d3050628d4/results.txt', sep=' ')
+
+# Add a column for -log10(pvalue)
+df['neg_log10_pvalue'] = -np.log10(df['pvalue'].astype(float))
+
+# Create the volcano plot
+plt.figure(figsize=(10, 6))
+
+# Plot non-significant genes (using padj < 0.05 for significance)
+plt.scatter(df[df['padj'].astype(float) >= 0.05]['log2FoldChange'].astype(float), df[df['padj'].astype(float) >= 0.05]['neg_log10_pvalue'], color='grey', alpha=0.5, label='Not Significant')
+
+# Plot upregulated genes (log2FoldChange > 1 and padj < 0.05)
+upregulated = df[(df['log2FoldChange'].astype(float) > 1) & (df['padj'].astype(float) < 0.05)]
+plt.scatter(upregulated['log2FoldChange'].astype(float), upregulated['neg_log10_pvalue'], color='red', label='Upregulated (log2FC > 1, padj < 0.05)')
+
+# Plot downregulated genes (log2FoldChange < -1 and padj < 0.05)
+downregulated = df[(df['log2FoldChange'].astype(float) < -1) & (df['padj'].astype(float) < 0.05)]
+plt.scatter(downregulated['log2FoldChange'].astype(float), downregulated['neg_log10_pvalue'], color='blue', label='Downregulated (log2FC < -1, padj < 0.05)')
+
+# Add labels and title
+plt.xlabel('Log2 Fold Change (Log2FC)')
+plt.ylabel('-log10(p-value)')
+plt.title('Volcano Plot')
+plt.legend()
+
+# Add significance thresholds
+plt.axvline(x=1, color='r', linestyle='--')
+plt.axvline(x=-1, color='b', linestyle='--')
+plt.axhline(y=-np.log10(0.05), color='g', linestyle='--')
+
+plt.grid(True)
+plt.tight_layout()
+plt.show()
