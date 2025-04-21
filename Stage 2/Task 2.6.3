@@ -1,0 +1,19 @@
+# Task 4: What are the functions of the top 5 upregulated genes and top 5 downregulated genes. (Use genecards)
+
+import pandas as pd
+
+# Load the dataset (ensure this uses the correct separator)
+df = pd.read_csv('https://gist.githubusercontent.com/stephenturner/806e31fce55a8b7175af/raw/1a507c4c3f9f1baaa3a69187223ff3d3050628d4/results.txt', sep=' ')
+
+# Determine upregulated genes and sort by Log2FC (descending)
+upregulated_genes = df[(df['log2FoldChange'].astype(float) > 1) & (df['pvalue'].astype(float) < 0.01)].sort_values(by='log2FoldChange', ascending=False)
+top_5_upregulated = upregulated_genes.head(5)['Gene']
+
+# Determine downregulated genes and sort by Log2FC (ascending - most negative first)
+downregulated_genes = df[(df['log2FoldChange'].astype(float) < -1) & (df['pvalue'].astype(float) < 0.01)].sort_values(by='log2FoldChange', ascending=True)
+top_5_downregulated = downregulated_genes.head(5)['Gene']
+
+print("\nTop 5 Upregulated Genes (sorted by Log2FC):")
+print(top_5_upregulated.tolist())
+print("\nTop 5 Downregulated Genes (sorted by Log2FC):")
+print(top_5_downregulated.tolist())
