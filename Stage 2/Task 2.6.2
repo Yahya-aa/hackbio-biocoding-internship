@@ -1,0 +1,12 @@
+# Task 3: Determine the downregulated genes (Genes with Log2FC < -1 and pvalue < 0.01)
+
+import pandas as pd
+
+# Load the dataset (ensure this uses the correct separator)
+df = pd.read_csv('https://gist.githubusercontent.com/stephenturner/806e31fce55a8b7175af/raw/1a507c4c3f9f1baaa3a69187223ff3d3050628d4/results.txt', sep=' ')
+
+# Determine downregulated genes
+downregulated_genes = df[(df['log2FoldChange'].astype(float) < -1) & (df['pvalue'].astype(float) < 0.01)]
+
+print("\nDownregulated Genes (Log2FC < -1 and p-value < 0.01):")
+print(downregulated_genes)
