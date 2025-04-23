@@ -1,0 +1,17 @@
+# Find the time when each strain reaches its maximum OD600 (carrying capacity)
+time_to_reach_capacity = {}
+
+for strain in df_long['Strain'].unique():
+    strain_data = df_long[df_long['Strain'] == strain]
+    max_OD600 = strain_data['OD600'].max()  # Maximum OD600 value (carrying capacity)
+    
+    # Find the corresponding time for the maximum OD600
+    time_at_max_OD600 = strain_data[strain_data['OD600'] == max_OD600]['time'].iloc[0]
+    
+    # Store the result in the dictionary
+    time_to_reach_capacity[strain] = time_at_max_OD600
+
+# Print the results
+print("Time to reach carrying capacity (in hours) for each strain:")
+for strain, time in time_to_reach_capacity.items():
+    print(f"{strain}: {time} hours")
