@@ -1,0 +1,35 @@
+import scipy.stats as stats
+
+# 1. Create dictionaries to store the max time for each well
+knock_out_wells = [col for col in df.columns if col.startswith('A')]  # e.g. A1-A12
+knock_in_wells = [col for col in df.columns if col.startswith('B') or col.startswith('C')]  # B1-B12 + C1-C12
+
+# 2. Function to get time of max OD for each well
+def get_time_of_max(well):
+    max_idx = df[well].idxmax()
+    return df.loc[max_idx, 'time']
+
+# 3. Get the time to peak OD600 for all wells in both groups
+ko_times = [get_time_of_max(well) for well in knock_out_wells]
+ki_times = [get_time_of_max(well) for well in knock_in_wells]
+
+# 4. Run statistical test - we'll use Mann-Whitney U Test since data may not be normally distributed
+stat, p_value = stats.mannwhitneyu(ko_times, ki_times, alternative='two-sided')
+
+# 5. Print results
+print("Knock-out times to max OD600:", ko_times)
+print("Knock-in times to max OD600:", ki_times)
+print("\nMann-Whitney U test:")
+print("Statistic =", stat)
+print("p-value =", p_value)
+
+# 6. Interpret the result as comments
+"""
+Observation:
+- The p-value tells us whether the difference in time to max OD600 between knock-in and knock-out strains is statistically significant.
+- If p < 0.05, we reject the null hypothesis and say the difference is significant.
+
+Example Interpretation:
+- If p < 0.05: There is a statistically significant difference in the time it takes knock-out vs knock-in strains to reach their max OD.
+- If p > 0.05: No significant difference was found between the two strain types.
+"""
