@@ -1,0 +1,26 @@
+import matplotlib.pyplot as plt
+
+# Set up the figure size
+plt.figure(figsize=(10, 6))
+
+# Plot the growth curve for each strain
+for strain in df_long['Strain'].unique():
+    strain_data = df_long[df_long['Strain'] == strain]
+    plt.plot(strain_data['time'], strain_data['OD600'], label=strain, marker='o')
+
+# Add labels and title
+plt.xlabel('Time (hours)')
+plt.ylabel('OD600 (Optical Density)')
+plt.title('Growth Curves for Different Strains')
+
+# Show the legend
+plt.legend()
+
+# Enable the grid
+plt.grid(True)
+
+# Tight layout for neat spacing
+plt.tight_layout()
+
+# Show the plot
+plt.show()
