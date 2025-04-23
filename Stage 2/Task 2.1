@@ -1,0 +1,11 @@
+import pandas as pd
+
+# Load the dataset from the URL (using the correct separator for a TSV file)
+url = 'https://raw.githubusercontent.com/HackBio-Internship/2025_project_collection/refs/heads/main/Python/Dataset/mcgc.tsv'
+df = pd.read_csv(url, sep='\t')
+
+# Display the first few rows to understand its structure
+print(df.head())
+
+# Check the columns to see if there are any missing or irrelevant ones
+print(df.columns)
