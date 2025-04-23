@@ -1,0 +1,5 @@
+# Reshape the dataset from wide to long format
+df_long = df.melt(id_vars=["time"], var_name="Strain", value_name="OD600")
+
+# Check the reshaped dataframe
+print(df_long.head())
