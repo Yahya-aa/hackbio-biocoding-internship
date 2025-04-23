@@ -1,0 +1,35 @@
+# Create a dictionary to classify knock-out and knock-in strains based on strain names
+knock_out_strains = [f"A{i}" for i in range(1, 13)]  # A1 to A12
+knock_in_strains = [f"B{i}" for i in range(1, 13)]   # B1 to B12
+wild_type_strains = [f"C{i}" for i in range(1, 13)]  # C1 to C12
+
+# Create lists for knock-out and knock-in times to reach capacity
+knock_out_times = [time_to_reach_capacity[strain] for strain in knock_out_strains]
+knock_in_times = [time_to_reach_capacity[strain] for strain in knock_in_strains]
+
+# Check the values for both lists
+print(f"Knock-out times: {knock_out_times}")
+print(f"Knock-in times: {knock_in_times}")
+
+# Create the scatter plot
+plt.figure(figsize=(8, 6))
+plt.scatter(knock_out_strains, knock_out_times, color='blue', label='Knock-out', marker='o')
+plt.scatter(knock_in_strains, knock_in_times, color='red', label='Knock-in', marker='x')
+plt.xlabel('Strain')
+plt.ylabel('Time to Reach Carrying Capacity (minutes)')
+plt.title('Scatter Plot of Time to Reach Carrying Capacity')
+plt.xticks(rotation=45)
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+# Create the box plot
+plt.figure(figsize=(8, 6))
+data = [knock_out_times, knock_in_times]
+plt.boxplot(data, labels=['Knock-out', 'Knock-in'], patch_artist=True, boxprops=dict(facecolor='lightblue', color='blue'), medianprops=dict(color='red'))
+plt.ylabel('Time to Reach Carrying Capacity (minutes)')
+plt.title('Box Plot of Time to Reach Carrying Capacity')
+plt.grid(True)
+plt.tight_layout()
+plt.show()
