@@ -1,0 +1,30 @@
+from scipy.stats import mannwhitneyu
+
+# Define strain groups
+knock_out_cols = ['A' + str(i) for i in range(1, 13)]
+knock_in_cols = ['B' + str(i) for i in range(1, 13)] + ['C' + str(i) for i in range(1, 13)]
+
+# Get time to maximum OD600 for each strain
+knock_out_times = [df['time'][df[col].idxmax()] for col in knock_out_cols]
+knock_in_times = [df['time'][df[col].idxmax()] for col in knock_in_cols]
+
+print("Knock-out times to max OD600:", knock_out_times)
+print("Knock-in times to max OD600:", knock_in_times)
+
+# Perform Mann-Whitney U test
+stat, p_value = mannwhitneyu(knock_out_times, knock_in_times, alternative='two-sided')
+
+print("\nMann-Whitney U test:")
+print("Statistic =", stat)
+print("p-value =", p_value)
+
+# Observation
+print("""
+Observation:
+- The p-value tells us whether the difference in time to max OD600 between knock-in and knock-out strains is statistically significant.
+- If p < 0.05, we reject the null hypothesis and say the difference is significant.
+
+Example Interpretation:
+- If p < 0.05: There is a statistically significant difference in the time it takes knock-out vs knock-in strains to reach their max OD.
+- If p > 0.05: No significant difference was found between the two strain types.
+""")
